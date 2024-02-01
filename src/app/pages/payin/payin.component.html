@@ -1,0 +1,82 @@
+
+<div class="header  bg-gradient-white pb-8 pt-5 pt-md-8">
+    <fieldset>
+        <legend class="custom-legend">Payin</legend>
+    </fieldset>
+    <div class="container-fluid">
+      <div class="header-body">
+ 
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+                <label class="form-control-label" for="input-username">Fecha Inicial</label>
+                <input type="date" class="form-control" [(ngModel)]="fecha">
+                
+              </div>
+        
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+                <label class="form-control-label" for="input-username">Tipo de Comprobante</label>
+                <select name="document" class="form-control" [(ngModel)]="document">
+                    <option *ngFor="let al of typedocument" value="{{al.id}}">{{ al.type + ' - ' + al.code + ' - ' + al.name}}</option>
+                </select>
+                
+              </div>
+        
+          </div>
+        
+         
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button class="btn btn-dark" (click)="Buscar()">
+                <i class="fa fa-search" aria-hidden="true" ></i>
+                Buscar
+            </button>
+            <button class="btn btn-success" (click)="Enviar()" >
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                Enviar
+            </button>
+        </div>
+
+<hr>
+
+
+
+  
+
+<div class="card shadow">
+    <div class="table-responsive">
+      <table  class="table align-items-center table-flush">
+        <thead>
+          <tr>
+            <th>Aliado</th>
+            <th>Total Credito</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movimiento of table">
+            <td>{{ movimiento.movimiento_merchant_name }}</td>
+            <td>{{ Moneda(movimiento.total) }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="eliminarMovimiento(movimiento)">
+                    <i class="fa fa-trash" aria-hidden="true" ></i>
+                    
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+ 
+  </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer></footer>
+ 
+  
